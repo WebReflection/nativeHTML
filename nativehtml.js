@@ -1,54 +1,30 @@
-const Document = require('./src/Document');
-const document = new Document();
-global.document = document;
+const {Document, Element, HTMLElement} = require('basichtml');
+Element.VOID_ELEMENT = /ActivityIndicator|Button|Image|Label|Progress|TextField/;
+let document;
+if ('document' in global) document = global.document;
+global.document = new Document();
 const hyperHTML = require('hyperhtml');
-// delete global.document;
+if (document) global.document = document;
 
-var div = document.createElement('div');
-var attr = document.createAttribute('test');
-attr.value = 'va"l\'u&';
-div.setAttributeNode(attr);
-div.appendChild(document.createElement('p')).appendChild(document.createTextNode(' text '));
-div.appendChild(document.createElement('br'));
-div.appendChild(document.createComment(' comment '));
+// <Button ios:text="foo" android:text="bar" />
+const btn = hyperHTML.document.createElement('Button');
+btn.setAttribute('ios:text', 'foo');
+btn.setAttribute('android:text', 'bar');
+console.log(btn.outerHTML);
 
-document.documentElement.appendChild(div);
+module.exports = class NativeHTML {
 
-var fragment = document.createDocumentFragment();
+  constructor(options) {
+    this.document = new Document();
+    this.customElements = document.customElements;
+  }
 
-fragment.appendChild(document.createElement('p')).textContent = 'first';
-fragment.appendChild(document.createElement('p')).textContent = 'second';
+  wire(...rest) {
+    document = hyperHTML.document;
+    hyperHTML.document = this.document;
+    const result = hyperHTML.wire(...rest);
+    hyperHTML.document = document;
+    return result;
+  }
 
-fragment.childNodes[0].id = 'test-id';
-
-div.appendChild(fragment);
-
-var other = document.createElement('div');
-other.appendChild(div.childNodes[0]);
-
-div.setAttribute('class', 'd');
-
-div.append('a', 'b', 'c');
-
-const render = hyperHTML.bind(document.createElement('div'));
-
-const update = (render, model) => render`
-  <div class="${model.class}"> ${model.text} </div>
-  <ul>${model.list.map(i => hyperHTML.wire()`<li>${i}</li>`)}</ul>
-`;
-
-console.log(update(render, {
-  text: 'Hello hyperHTML',
-  class: 'test a b',
-  list: [1, 2, 3]
-}).outerHTML);
-
-/*
-console.log(document.documentElement.innerHTML);
-
-document.documentElement.innerHTML = document.documentElement.innerHTML;
-
-console.log(document.documentElement.innerHTML);
-console.log(other.outerHTML);
-*/
-
+};
