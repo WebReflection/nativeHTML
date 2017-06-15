@@ -1,15 +1,14 @@
 {
   "name": "nativehtml",
   "version": "0.0.0",
-  "description": "",
+  "description": "hyperHTML ease and NativeScript performance for Android and iOS.",
   "main": "nativehtml.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "author": "Andrea Giammarchi",
   "license": "ISC",
   "dependencies": {
-    "basichtml": "^0.2.2",
-    "hyperhtml": "^0.11.11"
+    "basichtml": "^0.4.0",
+    "events": "^1.1.1",
+    "hyperhtml": "^0.11.12"
   }
 }
