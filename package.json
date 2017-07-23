@@ -1,6 +1,6 @@
 {
   "name": "nativehtml",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "hyperHTML ease and NativeScript performance for Android and iOS.",
   "main": "nativehtml.js",
   "scripts": {},
