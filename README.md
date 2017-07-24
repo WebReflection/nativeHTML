@@ -1,4 +1,6 @@
-# nativeHTML [![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/WebReflection/donate)
+# nativeHTML
+
+[![donate](https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&style=flat)](https://github.com/WebReflection/donate)
 
 [hyperHTML](https://github.com/WebReflection/hyperHTML) ease and [NativeScript](https://www.nativescript.org/) performance for Android and iOS.
 
