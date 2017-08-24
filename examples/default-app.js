@@ -28,12 +28,12 @@ exports.createPage = () => new NativeHTML({
   update() {
     this.render`
     <Page.actionBar>
-        <ActionBar title="${this.model.name}" icon="${this.model.icon}" class="action-bar" />
+        <ActionBar title=${this.model.name} icon=${this.model.icon} class="action-bar" />
     </Page.actionBar>
     <StackLayout class="p-20">
         <Label text="Tap the button" class="h1 text-center" />
-        <Button text="TAP" tap="${this.decrease}" class="btn btn-primary btn-active" />
-        <Label text="${this.message}" class="h2 text-center" textWrap="true" />
+        <Button text="TAP" tap=${this.decrease} class="btn btn-primary btn-active" />
+        <Label text=${this.message} class="h2 text-center" textWrap="true" />
     </StackLayout>`;
   }
 });
