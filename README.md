@@ -76,7 +76,8 @@ tns deploy android --device 192.168.1.2:3456
 # NOTE: you can omit --device xx.xx.xx if only 1 device
 
 # run the debugger
-tns debug android --debug-brk
+tns debug android
+# optionally add --debug-brk
 ```
 
 Once the debugger shows you the Chrome/ium link, go there and play the code.
