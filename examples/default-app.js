@@ -1,4 +1,4 @@
-const NativeHTML = require('./nativehtml.js');
+const NativeHTML = require('nativehtml');
 
 exports.createPage = () => new NativeHTML({
   // some place for Page data/state
